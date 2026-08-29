@@ -179,13 +179,15 @@ export default function ProductCategoriesSection({ onOpenQuote, onSelectCategory
                 onClick={() => onSelectCategory(cat)}
                 className="gsap-cat-card rounded-[10px] bg-slate-900/90 text-white border border-slate-800 hover:border-[#00C2FF] transition-all duration-300 flex flex-col justify-between overflow-hidden cursor-pointer group shadow-lg hover:shadow-[0_0_30px_rgba(0,194,255,0.25)] hover:-translate-y-1"
               >
-                {/* Photo Preview Container (Clean, Without Overlay Badges) */}
+                {/* Photo Preview Container (With Mobile Brightness Glow + Opacity Filter) */}
                 <div className="relative h-44 w-full bg-slate-950 overflow-hidden border-b border-slate-800">
                   <img
                     src={primaryImage}
                     alt={cat.title}
-                    className="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                    className="w-full h-full object-cover max-sm:grayscale-0 max-sm:opacity-85 max-sm:brightness-110 max-sm:contrast-105 sm:grayscale sm:opacity-60 sm:group-hover:grayscale-0 sm:group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
                   />
+                  {/* Subtle Glow Tint for Mobile Viewports */}
+                  <div className="sm:hidden absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent pointer-events-none" />
                 </div>
 
                 {/* Body Content */}
