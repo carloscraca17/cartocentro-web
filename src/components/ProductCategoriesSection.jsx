@@ -146,25 +146,55 @@ export default function ProductCategoriesSection({ onOpenQuote, onSelectCategory
         
         <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-[#0066FF] via-[#00C2FF] to-[#38BDF8]" />
 
-        {/* Section Header */}
-        <div className="max-w-3xl space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#00C2FF]/10 border border-[#00C2FF]/30 rounded-full">
-            <Box className="w-3.5 h-3.5 text-[#00C2FF]" />
-            <span className="text-[12px] font-semibold tracking-wider uppercase text-[#00C2FF]">
-              Líneas de Producción Especializada
-            </span>
+        {/* Section Header with Video Showcase */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+          
+          {/* Header Text (Left 7 Cols) */}
+          <div className="lg:col-span-7 space-y-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#00C2FF]/10 border border-[#00C2FF]/30 rounded-full">
+              <Box className="w-3.5 h-3.5 text-[#00C2FF]" />
+              <span className="text-[12px] font-semibold tracking-wider uppercase text-[#00C2FF]">
+                Líneas de Producción Especializada
+              </span>
+            </div>
+
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-white leading-[1.1]">
+              Categorías de Productos <br />
+              <span className="font-serif-italic text-cyan-gradient block sm:inline font-normal">
+                diseñadas para cada sector industrial.
+              </span>
+            </h2>
+
+            <p className="text-[16px] text-slate-300 font-normal leading-relaxed max-w-2xl">
+              Haga clic en cualquier categoría para visualizar la galería de imágenes reales de producto.
+            </p>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-white leading-[1.1]">
-            Categorías de Productos <br />
-            <span className="font-serif-italic text-cyan-gradient block sm:inline font-normal">
-              diseñadas para cada sector industrial.
-            </span>
-          </h2>
+          {/* Animated Video Showcase (Right 5 Cols) */}
+          <div className="lg:col-span-5 flex justify-center lg:justify-end">
+            <div className="relative rounded-[12px] overflow-hidden border border-[#00C2FF]/30 shadow-2xl bg-slate-950 flex items-center justify-center">
+              
+              {/* Video Element in original aspect ratio */}
+              <video
+                src="https://res.cloudinary.com/ahsxrxpv/video/upload/v1788044006/Clean_D_animated_studio_rende11.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full max-w-[420px] h-auto object-contain block"
+              />
 
-          <p className="text-[16px] text-slate-300 font-normal leading-relaxed">
-            Haga clic en cualquier categoría para visualizar la galería de imágenes reales de producto.
-          </p>
+              {/* Glassmorphism Gradient Overlay: 15% opacity on the right fading up to 100% (solid/opaque) on the left */}
+              <div 
+                className="absolute inset-0 pointer-events-none backdrop-blur-[4px]"
+                style={{
+                  background: 'linear-gradient(to right, rgba(15, 23, 42, 1) 0%, rgba(15, 23, 42, 0.75) 40%, rgba(15, 23, 42, 0.4) 70%, rgba(15, 23, 42, 0.15) 100%)'
+                }}
+              />
+              
+            </div>
+          </div>
+
         </div>
 
         {/* 8 Product Categories Grid */}
