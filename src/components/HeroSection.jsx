@@ -44,8 +44,8 @@ export default function HeroSection({ onOpenQuote }) {
       ref={heroRef} 
       className="hero relative min-h-[100svh] w-full flex items-center justify-end z-10 overflow-hidden bg-[#060913]"
     >
-      {/* Background Video (Normal Automatic Continuous Loop) */}
-      <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
+      {/* Background Video - Scaled Responsively to Cover Up to Primary CTA Button on Mobile */}
+      <div className="absolute top-0 left-0 right-0 h-[68%] sm:h-[65%] md:h-full w-full overflow-hidden pointer-events-none z-0">
         <video
           ref={videoRef}
           className="absolute inset-0 w-full h-full object-cover opacity-85"
@@ -56,6 +56,9 @@ export default function HeroSection({ onOpenQuote }) {
           playsInline
           preload="auto"
         />
+        
+        {/* Soft Fade Overlay Transition at Bottom of Mobile Video */}
+        <div className="md:hidden absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-[#060913] via-[#060913]/60 to-transparent pointer-events-none" />
       </div>
 
       {/* Dark Gradient Overlay matching reference image */}
