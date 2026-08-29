@@ -142,42 +142,40 @@ export default function ProductCategoriesSection({ onOpenQuote, onSelectCategory
       ref={sectionRef}
       className="relative z-10 py-24 sm:py-32 px-5 sm:px-8 md:px-12 lg:px-[96px] max-w-[1400px] mx-auto"
     >
-      <div className="section-edge-card p-8 sm:p-12 md:p-16 rounded-[12px] shadow-2xl space-y-12 bg-[#0F172A]/85 border border-[#00C2FF]/20 relative overflow-hidden">
+      {/* SECTION BACKGROUND VIDEO (BEHIND THE CARD) */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 rounded-[16px]">
+        <video
+          src="https://res.cloudinary.com/ahsxrxpv/video/upload/v1788044006/Clean_D_animated_studio_rende11.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute right-0 top-0 h-full w-full object-cover"
+        />
+
+        {/* Glassmorphism Gradient Overlay: 100% opacity on the left fading to 15% opacity on the right */}
+        <div 
+          className="absolute inset-0 backdrop-blur-[6px]"
+          style={{
+            background: 'linear-gradient(to right, rgba(6, 9, 19, 1) 0%, rgba(6, 9, 19, 0.85) 45%, rgba(6, 9, 19, 0.45) 75%, rgba(6, 9, 19, 0.15) 100%)'
+          }}
+        />
+      </div>
+
+      {/* FOREGROUND CARD CONTAINER */}
+      <div className="section-edge-card p-8 sm:p-12 md:p-16 rounded-[12px] shadow-2xl space-y-12 bg-[#0F172A]/70 backdrop-blur-md border border-[#00C2FF]/20 relative z-10 overflow-hidden">
         
         {/* Top Accent Line */}
         <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-[#0066FF] via-[#00C2FF] to-[#38BDF8] z-20" />
 
-        {/* BACKGROUND VIDEO LAYER */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
-          <video
-            src="https://res.cloudinary.com/ahsxrxpv/video/upload/v1788044006/Clean_D_animated_studio_rende11.mp4"
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="absolute right-0 top-0 h-full w-full object-cover"
-          />
-
-          {/* Glassmorphism & Gradient Overlay: 100% opacity on the left fading to 15% opacity on the right */}
-          <div 
-            className="absolute inset-0 backdrop-blur-[6px]"
-            style={{
-              background: 'linear-gradient(to right, rgba(15, 23, 42, 1) 0%, rgba(15, 23, 42, 0.85) 45%, rgba(15, 23, 42, 0.45) 75%, rgba(15, 23, 42, 0.15) 100%)'
-            }}
-          />
-        </div>
-
-        {/* FOREGROUND CONTENT (z-10) */}
-        <div className="relative z-10 space-y-12">
-
-          {/* Section Header */}
-          <div className="max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#00C2FF]/10 border border-[#00C2FF]/30 rounded-full">
-              <Box className="w-3.5 h-3.5 text-[#00C2FF]" />
-              <span className="text-[12px] font-semibold tracking-wider uppercase text-[#00C2FF]">
-                Líneas de Producción Especializada
-              </span>
-            </div>
+        {/* Section Header */}
+        <div className="max-w-3xl space-y-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#00C2FF]/10 border border-[#00C2FF]/30 rounded-full">
+            <Box className="w-3.5 h-3.5 text-[#00C2FF]" />
+            <span className="text-[12px] font-semibold tracking-wider uppercase text-[#00C2FF]">
+              Líneas de Producción Especializada
+            </span>
+          </div>
 
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-white leading-[1.1]">
               Categorías de Productos <br />
@@ -265,7 +263,6 @@ export default function ProductCategoriesSection({ onOpenQuote, onSelectCategory
         </div>
 
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
 }
