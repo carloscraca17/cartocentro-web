@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronRight, HelpCircle } from 'lucide-react';
 import FaqSection from '../components/FaqSection';
-import ContactSection from '../components/ContactSection';
 
 export default function FaqPage({ onOpenQuote }) {
   return (
@@ -48,9 +47,6 @@ export default function FaqPage({ onOpenQuote }) {
 
       {/* Main FAQ Section */}
       <FaqSection onOpenQuote={onOpenQuote} />
-
-      {/* Contact Section at the Bottom */}
-      <ContactSection onOpenQuote={onOpenQuote} />
 
     </div>
   );

@@ -1,8 +1,7 @@
 import React from 'react';
-import { ArrowRight, ShieldCheck, Award, Factory, Users, ChevronRight } from 'lucide-react';
+import { ShieldCheck, Award, Factory, Users, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import AboutSection from '../components/AboutSection';
-import ContactSection from '../components/ContactSection';
 
 export default function AboutPage({ onOpenQuote }) {
   return (
@@ -61,9 +60,6 @@ export default function AboutPage({ onOpenQuote }) {
 
       {/* Main About Section */}
       <AboutSection />
-
-      {/* Contact Section at the Bottom */}
-      <ContactSection onOpenQuote={onOpenQuote} />
 
     </div>
   );
