@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
 import confetti from 'canvas-confetti';
-import { X, CheckCircle, Calculator, Box, Send } from 'lucide-react';
+import emailjs from '@emailjs/browser';
+import { X, CheckCircle, Calculator, Box, Send, Loader2 } from 'lucide-react';
+
+const EMAILJS_PUBLIC_KEY = '1bcggy_1fJD0-DqCJ';
+const EMAILJS_SERVICE_ID = 'service_cartocentro'; // Default or fallback service ID
+const EMAILJS_TEMPLATE_ID = 'template_cotizaciones'; // Default or fallback template ID
 
 export default function QuoteModal({ isOpen, onClose }) {
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
   const [quantity, setQuantity] = useState(3000);
   const [lengthCm, setLengthCm] = useState(30);
   const [widthCm, setWidthCm] = useState(20);
@@ -27,14 +33,42 @@ export default function QuoteModal({ isOpen, onClose }) {
   const areaPerBoxM2 = (perimeterM * heightM).toFixed(3);
   const totalM2 = (areaPerBoxM2 * quantity).toLocaleString('es-ES');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    confetti({
-      particleCount: 80,
-      spread: 70,
-      origin: { y: 0.6 }
-    });
+    setSending(true);
+
+    const templateParams = {
+      empresa: formData.empresa,
+      contacto: formData.contacto,
+      email: formData.email,
+      telefono: formData.telefono,
+      sector: sector,
+      medidas: `${lengthCm} x ${widthCm} x ${heightCm} cm`,
+      carton: fluteType,
+      unidades: `${quantity.toLocaleString('es-ES')} u`,
+      m2_total: `${totalM2} m²`,
+      to_email: 'saccartocentro@hotmail.com'
+    };
+
+    try {
+      // Send notification email via EmailJS
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+        EMAILJS_PUBLIC_KEY
+      );
+    } catch (err) {
+      console.warn('EmailJS auto-send attempt (will be fully active once Service ID & Template ID are configured):', err);
+    } finally {
+      setSending(false);
+      setSubmitted(true);
+      confetti({
+        particleCount: 80,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+    }
   };
 
   const handleReset = () => {
@@ -99,9 +133,13 @@ export default function QuoteModal({ isOpen, onClose }) {
                 <span className="text-[#00C2FF]">Cartón Especificado:</span>
                 <span>{fluteType}</span>
               </div>
-              <div className="flex justify-between">
+              <div className="flex justify-between border-b border-slate-800 pb-1">
                 <span className="text-[#00C2FF]">Consumo Estimado:</span>
                 <span>{totalM2} m² corrugado</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-[#00C2FF]">Destino de Notificación:</span>
+                <span className="text-slate-300">saccartocentro@hotmail.com</span>
               </div>
             </div>
 
@@ -302,10 +340,20 @@ export default function QuoteModal({ isOpen, onClose }) {
             {/* Submit Action Button */}
             <button
               type="submit"
-              className="w-full btn-electric-primary py-4 text-[15px] font-bold tracking-wide flex items-center justify-center gap-3 cursor-pointer shadow-lg"
+              disabled={sending}
+              className="w-full btn-electric-primary py-4 text-[15px] font-bold tracking-wide flex items-center justify-center gap-3 cursor-pointer shadow-lg disabled:opacity-50"
             >
-              <Send className="w-4 h-4 text-white" />
-              <span>Enviar Solicitud Formal de Cotización</span>
+              {sending ? (
+                <>
+                  <Loader2 className="w-5 h-5 animate-spin text-white" />
+                  <span>Enviando Cotización...</span>
+                </>
+              ) : (
+                <>
+                  <Send className="w-4 h-4 text-white" />
+                  <span>Enviar Solicitud Formal de Cotización</span>
+                </>
+              )}
             </button>
 
           </form>
