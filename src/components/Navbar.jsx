@@ -24,15 +24,15 @@ export default function Navbar({ onOpenQuote }) {
   };
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 will-change-transform transform-gpu ${
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       scrolled ? 'py-3' : 'py-5 md:py-6'
     }`}>
-      {/* Background layer with constant backdrop-blur to eliminate browser GPU white flash */}
+      {/* Seamless background layer with zero border lines to prevent any horizontal line artifact */}
       <div 
-        className={`absolute inset-0 -z-10 backdrop-blur-md transition-all duration-300 will-change-transform ${
+        className={`absolute inset-0 -z-10 backdrop-blur-md transition-all duration-300 ${
           scrolled 
-            ? 'bg-[#0A0F1D]/92 border-b border-[#00C2FF]/20 shadow-2xl opacity-100' 
-            : 'bg-gradient-to-b from-[#060913]/95 via-[#060913]/70 to-transparent opacity-95'
+            ? 'bg-[#0A0F1D]/92 shadow-2xl opacity-100' 
+            : 'bg-gradient-to-b from-[#060913]/95 via-[#060913]/60 to-transparent opacity-95'
         }`} 
       />
 
@@ -40,7 +40,7 @@ export default function Navbar({ onOpenQuote }) {
         
         {/* Brand Logo */}
         <a href="#" className="flex items-center gap-3 group focus:outline-none">
-          <div className="bg-[#F7F3EA] px-3 py-1.5 rounded-[6px] shadow-md border border-[#00C2FF]/30 group-hover:border-[#00C2FF] transition-all">
+          <div className="bg-[#F7F3EA] px-3 py-1.5 rounded-[6px] shadow-md border border-slate-700/50 group-hover:border-[#00C2FF] transition-all">
             <img 
               src="https://i.ibb.co/y25ymBs/LOGO-carto-color.png" 
               alt="Cartocentro" 
