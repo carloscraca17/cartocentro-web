@@ -9,6 +9,7 @@ import ContactSection from './components/ContactSection';
 import FooterSection from './components/FooterSection';
 import CategoryGalleryModal from './components/CategoryGalleryModal';
 import QuoteModal from './components/QuoteModal';
+import WhatsAppButton from './components/WhatsAppButton';
 
 export default function App() {
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
@@ -46,6 +47,9 @@ export default function App() {
 
       {/* Footer Section */}
       <FooterSection onOpenQuote={() => setIsQuoteOpen(true)} />
+
+      {/* Floating WhatsApp Button Component */}
+      <WhatsAppButton />
 
       {/* Interactive Category Photo Gallery Modal */}
       <CategoryGalleryModal

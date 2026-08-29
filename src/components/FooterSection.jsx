@@ -1,5 +1,5 @@
 import React from 'react';
-import { Phone, Mail, MapPin, ShieldCheck, ArrowUpRight } from 'lucide-react';
+import { Phone, Mail, MapPin, ShieldCheck, ArrowUpRight, Clock, Navigation } from 'lucide-react';
 
 export default function FooterSection({ onOpenQuote }) {
   const scrollToTop = () => {
@@ -78,17 +78,37 @@ export default function FooterSection({ onOpenQuote }) {
             </h4>
 
             <div className="space-y-3 text-slate-300">
-              <div className="flex items-start gap-3">
+              <a 
+                href="https://maps.app.goo.gl/jsGqWztXSSpQtD8c8" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-start gap-3 hover:text-[#00C2FF] transition-colors group"
+              >
                 <MapPin className="w-4 h-4 text-[#00C2FF] shrink-0 mt-1" />
-                <span>Planta Industrial CARTOCENTRO, Zona Industrial Principal.</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <Phone className="w-4 h-4 text-[#00C2FF] shrink-0" />
-                <span>Atención a Ventas: (0800) CARTON-B2B</span>
-              </div>
-              <div className="flex items-center gap-3">
+                <span>Carto Centro — Planta Industrial, Venezuela <Navigation className="w-3 h-3 inline-block ml-1 opacity-70 group-hover:opacity-100" /></span>
+              </a>
+              
+              <a 
+                href="https://wa.me/584243620946"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 hover:text-[#25D366] transition-colors"
+              >
+                <Phone className="w-4 h-4 text-[#25D366] shrink-0" />
+                <span className="font-mono font-bold">+58 424 362 0946</span>
+              </a>
+              
+              <a 
+                href="mailto:saccartocentro@hotmail.com"
+                className="flex items-center gap-3 hover:text-[#00C2FF] transition-colors"
+              >
                 <Mail className="w-4 h-4 text-[#00C2FF] shrink-0" />
-                <span>ventas@cartocentro.com</span>
+                <span className="font-mono">saccartocentro@hotmail.com</span>
+              </a>
+
+              <div className="flex items-center gap-3 text-slate-400 text-[13px]">
+                <Clock className="w-4 h-4 text-[#00C2FF] shrink-0" />
+                <span>Lun a Vie: 7:30 a.m. – 4:00 p.m.</span>
               </div>
             </div>
 

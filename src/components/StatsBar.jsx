@@ -158,22 +158,24 @@ export default function StatsBar() {
       {/* Bottom Contact Row */}
       <div className="border-t border-white/10 pt-5 flex flex-wrap items-center justify-center gap-3 sm:gap-4 w-full">
         
-        {/* Phone Contact Pill */}
+        {/* Phone / WhatsApp Contact Pill */}
         <a 
-          href="tel:+582418002278"
-          className="rounded-full border border-white/20 hover:border-[#00C2FF] bg-black/40 hover:bg-[#00C2FF]/10 backdrop-blur-md px-5 py-2.5 flex items-center gap-2.5 text-[12px] sm:text-[13px] font-mono font-bold text-white transition-all cursor-pointer shadow-md group"
+          href="https://wa.me/584243620946?text=Hola%20Cartocentro,%20deseo%20solicitar%20informaci%C3%B3n"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="rounded-full border border-white/20 hover:border-[#25D366] bg-black/40 hover:bg-[#25D366]/10 backdrop-blur-md px-5 py-2.5 flex items-center gap-2.5 text-[12px] sm:text-[13px] font-mono font-bold text-white transition-all cursor-pointer shadow-md group"
         >
-          <Phone className="w-4 h-4 text-[#00C2FF] group-hover:scale-110 transition-transform" />
-          <span>(0800) CARTON-B2B</span>
+          <Phone className="w-4 h-4 text-[#25D366] group-hover:scale-110 transition-transform" />
+          <span>+58 424 362 0946</span>
         </a>
 
         {/* Email Contact Pill */}
         <a 
-          href="mailto:ventas@cartocentro.com"
+          href="mailto:saccartocentro@hotmail.com"
           className="rounded-full border border-white/20 hover:border-[#00C2FF] bg-black/40 hover:bg-[#00C2FF]/10 backdrop-blur-md px-5 py-2.5 flex items-center gap-2.5 text-[12px] sm:text-[13px] font-mono font-bold text-white transition-all cursor-pointer shadow-md group"
         >
           <Mail className="w-4 h-4 text-[#00C2FF] group-hover:scale-110 transition-transform" />
-          <span>ventas@cartocentro.com</span>
+          <span>saccartocentro@hotmail.com</span>
         </a>
 
       </div>
