@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { ShieldCheck } from 'lucide-react';
 
 export default function Navbar({ onOpenQuote }) {
   const [scrolled, setScrolled] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 40) {
+      if (window.scrollY > 30) {
         setScrolled(true);
       } else {
         setScrolled(false);
@@ -16,22 +19,39 @@ export default function Navbar({ onOpenQuote }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+  const handleNavClick = (target) => {
+    if (target.startsWith('/#')) {
+      const elementId = target.replace('/#', '');
+      if (location.pathname === '/') {
+        const element = document.getElementById(elementId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      } else {
+        navigate(target);
+      }
+    } else if (target === '/') {
+      if (location.pathname === '/') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        navigate('/');
+      }
+    } else {
+      navigate(target);
     }
   };
 
+  const isSubpage = location.pathname !== '/';
+
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      scrolled ? 'py-3' : 'py-5 md:py-6'
+      scrolled || isSubpage ? 'py-3.5' : 'py-5 md:py-6'
     }`}>
-      {/* Seamless background layer with zero border lines to prevent any horizontal line artifact */}
+      {/* Seamless background layer with backdrop blur */}
       <div 
         className={`absolute inset-0 -z-10 backdrop-blur-md transition-all duration-300 ${
-          scrolled 
-            ? 'bg-[#0A0F1D]/92 shadow-2xl opacity-100' 
+          scrolled || isSubpage 
+            ? 'bg-[#0A0F1D]/95 shadow-2xl opacity-100' 
             : 'bg-gradient-to-b from-[#060913]/95 via-[#060913]/60 to-transparent opacity-95'
         }`} 
       />
@@ -39,7 +59,7 @@ export default function Navbar({ onOpenQuote }) {
       <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-12 flex items-center justify-between relative z-10">
         
         {/* Brand Logo */}
-        <a href="#" className="flex items-center gap-3 group focus:outline-none">
+        <Link to="/" className="flex items-center gap-3 group focus:outline-none">
           <div className="bg-[#F7F3EA] px-3 py-1.5 rounded-[6px] shadow-md border border-slate-700/50 group-hover:border-[#00C2FF] transition-all">
             <img 
               src="https://i.ibb.co/y25ymBs/LOGO-carto-color.png" 
@@ -48,43 +68,49 @@ export default function Navbar({ onOpenQuote }) {
               className="transition-transform duration-300 group-hover:scale-[1.02]"
             />
           </div>
-        </a>
+        </Link>
 
-        {/* Navigation Links - Hidden at <= 760px (md:flex) */}
+        {/* Navigation Links */}
         <nav className="hidden md:flex items-center gap-7 text-[14px] font-medium tracking-wide text-white">
           <button 
-            onClick={() => scrollToSection('inicio')} 
-            className="hover:text-[#00C2FF] transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#00C2FF] hover:after:w-full after:transition-all cursor-pointer"
+            onClick={() => handleNavClick('/')} 
+            className={`hover:text-[#00C2FF] transition-colors relative py-1 cursor-pointer ${
+              location.pathname === '/' ? 'text-[#00C2FF] font-semibold' : ''
+            }`}
           >
             Inicio
           </button>
           <button 
-            onClick={() => scrollToSection('nosotros')} 
-            className="hover:text-[#00C2FF] transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#00C2FF] hover:after:w-full after:transition-all cursor-pointer"
+            onClick={() => handleNavClick('/nosotros')} 
+            className={`hover:text-[#00C2FF] transition-colors relative py-1 cursor-pointer ${
+              location.pathname === '/nosotros' ? 'text-[#00C2FF] font-semibold' : ''
+            }`}
           >
             Nosotros
           </button>
           <button 
-            onClick={() => scrollToSection('categorias')} 
-            className="hover:text-[#00C2FF] transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#00C2FF] hover:after:w-full after:transition-all cursor-pointer"
+            onClick={() => handleNavClick('/#categorias')} 
+            className="hover:text-[#00C2FF] transition-colors relative py-1 cursor-pointer"
           >
             Productos
           </button>
           <button 
-            onClick={() => scrollToSection('medida')} 
-            className="hover:text-[#00C2FF] transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#00C2FF] hover:after:w-full after:transition-all cursor-pointer"
+            onClick={() => handleNavClick('/#medida')} 
+            className="hover:text-[#00C2FF] transition-colors relative py-1 cursor-pointer"
           >
             Sistema a la Medida
           </button>
           <button 
-            onClick={() => scrollToSection('faq')} 
-            className="hover:text-[#00C2FF] transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#00C2FF] hover:after:w-full after:transition-all cursor-pointer"
+            onClick={() => handleNavClick('/preguntas-frecuentes')} 
+            className={`hover:text-[#00C2FF] transition-colors relative py-1 cursor-pointer ${
+              location.pathname === '/preguntas-frecuentes' ? 'text-[#00C2FF] font-semibold' : ''
+            }`}
           >
             Preguntas Frecuentes
           </button>
           <button 
-            onClick={() => scrollToSection('contacto')} 
-            className="hover:text-[#00C2FF] transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#00C2FF] hover:after:w-full after:transition-all cursor-pointer"
+            onClick={() => handleNavClick('/#contacto')} 
+            className="hover:text-[#00C2FF] transition-colors relative py-1 cursor-pointer"
           >
             Contacto
           </button>

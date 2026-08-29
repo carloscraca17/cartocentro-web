@@ -1,9 +1,35 @@
 import React from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Phone, Mail, MapPin, ShieldCheck, ArrowUpRight, Clock, Navigation } from 'lucide-react';
 
 export default function FooterSection({ onOpenQuote }) {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleNavClick = (target) => {
+    if (target.startsWith('/#')) {
+      const elementId = target.replace('/#', '');
+      if (location.pathname === '/') {
+        const element = document.getElementById(elementId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      } else {
+        navigate(target);
+      }
+    } else if (target === '/') {
+      if (location.pathname === '/') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        navigate('/');
+      }
+    } else {
+      navigate(target);
+    }
   };
 
   return (
@@ -39,34 +65,34 @@ export default function FooterSection({ onOpenQuote }) {
             </h4>
             <ul className="space-y-2.5 text-slate-300 font-medium">
               <li>
-                <a href="#inicio" className="hover:text-[#00C2FF] transition-colors">
+                <button onClick={() => handleNavClick('/')} className="hover:text-[#00C2FF] transition-colors cursor-pointer">
                   Inicio
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#nosotros" className="hover:text-[#00C2FF] transition-colors">
+                <Link to="/nosotros" className="hover:text-[#00C2FF] transition-colors">
                   Quiénes Somos
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#categorias" className="hover:text-[#00C2FF] transition-colors">
+                <button onClick={() => handleNavClick('/#categorias')} className="hover:text-[#00C2FF] transition-colors cursor-pointer">
                   Productos
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#medida" className="hover:text-[#00C2FF] transition-colors">
+                <button onClick={() => handleNavClick('/#medida')} className="hover:text-[#00C2FF] transition-colors cursor-pointer">
                   Sistema a la Medida
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#faq" className="hover:text-[#00C2FF] transition-colors">
+                <Link to="/preguntas-frecuentes" className="hover:text-[#00C2FF] transition-colors">
                   Preguntas Frecuentes
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#contacto" className="hover:text-[#00C2FF] transition-colors">
+                <button onClick={() => handleNavClick('/#contacto')} className="hover:text-[#00C2FF] transition-colors cursor-pointer">
                   Contacto Directo
-                </a>
+                </button>
               </li>
             </ul>
           </div>

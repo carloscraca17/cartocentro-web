@@ -1,70 +1,72 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import HeroSection from './components/HeroSection';
-import AboutSection from './components/AboutSection';
-import ProductCategoriesSection from './components/ProductCategoriesSection';
-import CustomPackagesSection from './components/CustomPackagesSection';
-import FaqSection from './components/FaqSection';
-import ContactSection from './components/ContactSection';
 import FooterSection from './components/FooterSection';
+import WhatsAppButton from './components/WhatsAppButton';
 import CategoryGalleryModal from './components/CategoryGalleryModal';
 import QuoteModal from './components/QuoteModal';
-import WhatsAppButton from './components/WhatsAppButton';
+import ScrollToTop from './components/ScrollToTop';
+
+import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
+import FaqPage from './pages/FaqPage';
 
 export default function App() {
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(null);
 
   return (
-    <div className="relative min-h-screen font-sans-custom bg-[#060913] text-white selection:bg-[#00C2FF] selection:text-black">
-      
-      {/* Navigation Header */}
-      <Navbar onOpenQuote={() => setIsQuoteOpen(true)} />
+    <Router>
+      <ScrollToTop />
+      <div className="relative min-h-screen font-sans-custom bg-[#060913] text-white selection:bg-[#00C2FF] selection:text-black">
+        
+        {/* Navigation Header */}
+        <Navbar onOpenQuote={() => setIsQuoteOpen(true)} />
 
-      {/* Main Sections */}
-      <main className="relative z-10">
-        {/* Hero Section (Contains HERO background video playing normally in loop) */}
-        <HeroSection onOpenQuote={() => setIsQuoteOpen(true)} />
+        {/* Page Routes */}
+        <main className="relative z-10">
+          <Routes>
+            <Route 
+              path="/" 
+              element={
+                <HomePage 
+                  onOpenQuote={() => setIsQuoteOpen(true)} 
+                  onSelectCategory={(cat) => setSelectedCategory(cat)}
+                />
+              } 
+            />
+            <Route 
+              path="/nosotros" 
+              element={<AboutPage onOpenQuote={() => setIsQuoteOpen(true)} />} 
+            />
+            <Route 
+              path="/preguntas-frecuentes" 
+              element={<FaqPage onOpenQuote={() => setIsQuoteOpen(true)} />} 
+            />
+          </Routes>
+        </main>
 
-        {/* Section 1: ¿QUIÉNES SOMOS? */}
-        <AboutSection />
+        {/* Footer Section */}
+        <FooterSection onOpenQuote={() => setIsQuoteOpen(true)} />
 
-        {/* Section 2: CATEGORÍAS DE PRODUCTOS */}
-        <ProductCategoriesSection 
-          onOpenQuote={() => setIsQuoteOpen(true)} 
-          onSelectCategory={(cat) => setSelectedCategory(cat)}
+        {/* Floating WhatsApp Button Component */}
+        <WhatsAppButton />
+
+        {/* Interactive Category Photo Gallery Modal */}
+        <CategoryGalleryModal
+          category={selectedCategory}
+          isOpen={Boolean(selectedCategory)}
+          onClose={() => setSelectedCategory(null)}
+          onOpenQuote={() => setIsQuoteOpen(true)}
         />
 
-        {/* Section 3: EMPAQUES A LA MEDIDA */}
-        <CustomPackagesSection onOpenQuote={() => setIsQuoteOpen(true)} />
+        {/* Interactive Quote Calculator Modal */}
+        <QuoteModal 
+          isOpen={isQuoteOpen} 
+          onClose={() => setIsQuoteOpen(false)} 
+        />
 
-        {/* Section 4: PREGUNTAS FRECUENTES (FAQ) */}
-        <FaqSection onOpenQuote={() => setIsQuoteOpen(true)} />
-
-        {/* Section 5: CONTACTO CORPORATIVO */}
-        <ContactSection onOpenQuote={() => setIsQuoteOpen(true)} />
-      </main>
-
-      {/* Footer Section */}
-      <FooterSection onOpenQuote={() => setIsQuoteOpen(true)} />
-
-      {/* Floating WhatsApp Button Component */}
-      <WhatsAppButton />
-
-      {/* Interactive Category Photo Gallery Modal */}
-      <CategoryGalleryModal
-        category={selectedCategory}
-        isOpen={Boolean(selectedCategory)}
-        onClose={() => setSelectedCategory(null)}
-        onOpenQuote={() => setIsQuoteOpen(true)}
-      />
-
-      {/* Interactive Quote Calculator Modal */}
-      <QuoteModal 
-        isOpen={isQuoteOpen} 
-        onClose={() => setIsQuoteOpen(false)} 
-      />
-
-    </div>
+      </div>
+    </Router>
   );
 }
