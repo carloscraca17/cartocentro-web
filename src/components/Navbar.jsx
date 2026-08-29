@@ -65,8 +65,14 @@ export default function Navbar({ onOpenQuote }) {
 
       <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-12 flex items-center justify-between relative z-10">
         
-        {/* Brand Logo */}
-        <Link to="/" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 group focus:outline-none">
+        {/* Brand Logo - Hidden on mobile when scrolled down */}
+        <Link 
+          to="/" 
+          onClick={() => setMobileMenuOpen(false)} 
+          className={`transition-all duration-300 items-center gap-3 group focus:outline-none ${
+            scrolled ? 'hidden md:flex' : 'flex'
+          }`}
+        >
           <div className="bg-[#F7F3EA] px-3 py-1.5 rounded-[6px] shadow-md border border-slate-700/50 group-hover:border-[#00C2FF] transition-all">
             <img 
               src="https://i.ibb.co/y25ymBs/LOGO-carto-color.png" 
@@ -124,7 +130,7 @@ export default function Navbar({ onOpenQuote }) {
         </nav>
 
         {/* Header Action & Mobile Menu Toggle Button */}
-        <div className="flex items-center gap-3">
+        <div className={`flex items-center gap-3 transition-all ${scrolled ? 'ml-auto md:ml-0' : ''}`}>
           <button
             onClick={() => {
               setMobileMenuOpen(false);
