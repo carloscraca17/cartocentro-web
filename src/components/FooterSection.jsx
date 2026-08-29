@@ -6,8 +6,6 @@ export default function FooterSection({ onOpenQuote }) {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const isSubpage = location.pathname !== '/';
-
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -35,8 +33,8 @@ export default function FooterSection({ onOpenQuote }) {
   };
 
   return (
-    <footer className="relative z-10 bg-[#060913] text-white pt-20 pb-12 border-t border-[#00C2FF]/20">
-      <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-12 lg:px-[96px] space-y-16">
+    <footer className="relative z-10 bg-[#060913] text-white pt-16 pb-12 border-t border-[#00C2FF]/20">
+      <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-12 lg:px-[96px] space-y-12">
         
         {/* Main Footer Links & Info Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pt-4">
