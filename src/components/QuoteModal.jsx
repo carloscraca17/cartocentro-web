@@ -4,8 +4,9 @@ import emailjs from '@emailjs/browser';
 import { X, CheckCircle, Calculator, Box, Send, Loader2 } from 'lucide-react';
 
 const EMAILJS_PUBLIC_KEY = '1bcggy_1fJD0-DqCJ';
-const EMAILJS_SERVICE_ID = 'service_cartocentro'; // Default or fallback service ID
-const EMAILJS_TEMPLATE_ID = 'template_cotizaciones'; // Default or fallback template ID
+const EMAILJS_SERVICE_ID = 'service_kcc7yzy';
+const EMAILJS_TEMPLATE_CONTACT = 'template_lk1b6sf'; // Contact us / Internal notification to Cartocentro
+const EMAILJS_TEMPLATE_AUTOREPLY = 'template_59oj8fb'; // Automated response to client
 
 export default function QuoteModal({ isOpen, onClose }) {
   const [submitted, setSubmitted] = useState(false);
@@ -51,15 +52,28 @@ export default function QuoteModal({ isOpen, onClose }) {
     };
 
     try {
-      // Send notification email via EmailJS
+      // 1. Send internal quote notification email to Cartocentro
       await emailjs.send(
         EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
+        EMAILJS_TEMPLATE_CONTACT,
         templateParams,
         EMAILJS_PUBLIC_KEY
       );
+
+      // 2. Send automated confirmation reply email to client
+      try {
+        await emailjs.send(
+          EMAILJS_SERVICE_ID,
+          EMAILJS_TEMPLATE_AUTOREPLY,
+          templateParams,
+          EMAILJS_PUBLIC_KEY
+        );
+      } catch (autoErr) {
+        console.warn('Autoreply notification trigger note:', autoErr);
+      }
+
     } catch (err) {
-      console.warn('EmailJS auto-send attempt (will be fully active once Service ID & Template ID are configured):', err);
+      console.error('Error dispatching quote email via EmailJS:', err);
     } finally {
       setSending(false);
       setSubmitted(true);
@@ -138,7 +152,7 @@ export default function QuoteModal({ isOpen, onClose }) {
                 <span>{totalM2} m² corrugado</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-[#00C2FF]">Destino de Notificación:</span>
+                <span className="text-[#00C2FF]">Notificación Enviada a:</span>
                 <span className="text-slate-300">saccartocentro@hotmail.com</span>
               </div>
             </div>
@@ -269,7 +283,7 @@ export default function QuoteModal({ isOpen, onClose }) {
                     onClick={() => setFluteType(item.name)}
                     className={`py-2 px-3 rounded-[8px] text-[12px] font-semibold border transition-all text-center cursor-pointer ${
                       fluteType === item.name 
-                        ? 'bg-[#00C2FF] text-black border-[#00C2FF] font-bold' 
+                        ? 'bg-[#00C2FF] text-[#0A0F1D] border-[#00C2FF] font-bold' 
                         : 'bg-slate-900/80 text-slate-300 border-slate-800 hover:border-[#00C2FF]/50'
                     }`}
                   >
