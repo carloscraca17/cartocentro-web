@@ -69,12 +69,12 @@ export default function ContactSection({ onOpenQuote }) {
           <div className="lg:col-span-6 space-y-4 flex flex-col justify-between">
             <div className="space-y-4">
               
-              {/* Plant Location Card */}
+              {/* Plant Location Card with Exact Address & Direct Google Maps Link */}
               <div className="gsap-contact-anim p-6 rounded-[10px] bg-slate-900/80 border border-slate-800 flex items-start gap-4">
                 <div className="w-10 h-10 rounded-[6px] bg-[#00C2FF]/10 text-[#00C2FF] flex items-center justify-center shrink-0 mt-0.5">
                   <MapPin className="w-5 h-5" />
                 </div>
-                <div className="space-y-2 flex-1">
+                <div className="space-y-1.5 flex-1">
                   <div className="flex items-center justify-between flex-wrap gap-2">
                     <h4 className="font-bold text-[16px] text-white">Ubicación de Planta</h4>
                     <a 
@@ -87,8 +87,15 @@ export default function ContactSection({ onOpenQuote }) {
                       <span>Cómo Llegar</span>
                     </a>
                   </div>
-                  <p className="text-[14px] text-slate-300">
-                    Carto Centro — Planta Industrial de Empaques Corrugados, Venezuela.
+                  <p className="text-[14px] text-slate-300 leading-relaxed">
+                    <a 
+                      href="https://maps.app.goo.gl/jsGqWztXSSpQtD8c8" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="hover:text-[#00C2FF] transition-colors"
+                    >
+                      99 Av. Güigüe, Maracay 2103, Aragua, Venezuela.
+                    </a>
                   </p>
                 </div>
               </div>
@@ -163,7 +170,7 @@ export default function ContactSection({ onOpenQuote }) {
                     <span>Ubicación y Cómo Llegar</span>
                   </h3>
                   <p className="text-[13px] text-slate-300">
-                    Planta principal Carto Centro en Google Maps
+                    99 Av. Güigüe, Maracay 2103, Aragua, Venezuela
                   </p>
                 </div>
                 <a

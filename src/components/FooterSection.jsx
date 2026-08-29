@@ -85,7 +85,9 @@ export default function FooterSection({ onOpenQuote }) {
                 className="flex items-start gap-3 hover:text-[#00C2FF] transition-colors group"
               >
                 <MapPin className="w-4 h-4 text-[#00C2FF] shrink-0 mt-1" />
-                <span>Carto Centro — Planta Industrial, Venezuela <Navigation className="w-3 h-3 inline-block ml-1 opacity-70 group-hover:opacity-100" /></span>
+                <span className="leading-snug">
+                  99 Av. Güigüe, Maracay 2103, Aragua, Venezuela <Navigation className="w-3 h-3 inline-block ml-1 opacity-70 group-hover:opacity-100" />
+                </span>
               </a>
               
               <a 
