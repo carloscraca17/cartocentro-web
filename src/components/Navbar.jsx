@@ -97,7 +97,7 @@ export default function Navbar({ onOpenQuote }) {
             className="btn-electric-primary px-5 py-2.5 text-[13px] sm:text-[14px] font-bold tracking-wide flex items-center gap-2 cursor-pointer"
           >
             <ShieldCheck className="w-4 h-4 text-white" />
-            <span>Cotizar Volumen B2B</span>
+            <span>Cotizar por Volumen</span>
           </button>
         </div>
 

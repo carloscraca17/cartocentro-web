@@ -23,7 +23,7 @@ export default function FooterSection({ onOpenQuote }) {
             </div>
             
             <p className="text-[14px] text-slate-300 max-w-md leading-relaxed font-normal">
-              Fábrica B2B de empaques de cartón corrugado a la medida. 45 años garantizando resistencia estructural, precisión dimensional y cobertura a nivel nacional en toda Venezuela.
+              Fábrica de empaques de cartón corrugado a la medida. 45 años garantizando resistencia estructural, precisión dimensional y cobertura a nivel nacional en toda Venezuela.
             </p>
 
             <div className="flex items-center gap-3 text-[12px] text-[#00C2FF] font-semibold">
@@ -65,16 +65,16 @@ export default function FooterSection({ onOpenQuote }) {
               </li>
               <li>
                 <a href="#contacto" className="hover:text-[#00C2FF] transition-colors">
-                  Contacto B2B
+                  Contacto Directo
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* B2B Direct Contact */}
+          {/* Direct Contact */}
           <div className="md:col-span-4 space-y-4 text-[14px]">
             <h4 className="text-[12px] uppercase font-bold tracking-wider text-[#00C2FF]">
-              Atención Corporativa B2B
+              Atención Corporativa
             </h4>
 
             <div className="space-y-3 text-slate-300">

@@ -99,7 +99,7 @@ export default function FaqSection({ onOpenQuote }) {
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#00C2FF]/10 border border-[#00C2FF]/30 rounded-full">
             <HelpCircle className="w-3.5 h-3.5 text-[#00C2FF]" />
             <span className="text-[12px] font-semibold tracking-wider uppercase text-[#00C2FF]">
-              Resolución de Dudas B2B
+              Resolución de Dudas
             </span>
           </div>
 
@@ -165,7 +165,7 @@ export default function FaqSection({ onOpenQuote }) {
               ¿Tiene especificaciones técnicas especiales?
             </h4>
             <p className="text-[14px] text-slate-300">
-              Nuestro equipo de ingeniería estructural está listo para asesorarle en volumen B2B.
+              Nuestro equipo de ingeniería estructural está listo para asesorarle en su proyecto.
             </p>
           </div>
 

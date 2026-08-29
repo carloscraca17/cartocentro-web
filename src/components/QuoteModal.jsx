@@ -102,7 +102,7 @@ export default function QuoteModal({ isOpen, onClose }) {
             </div>
             <div>
               <h3 className="font-bold text-lg tracking-tight text-white">
-                Cotizador B2B de Volumen
+                Cotizador por Volumen
               </h3>
               <p className="text-[12px] text-slate-400">
                 Presupuesto técnico oficial para lotes desde 3.000 unidades.

@@ -31,7 +31,7 @@ export const PRODUCT_CATEGORIES = [
   {
     id: "bandejas",
     title: "Bandejas",
-    subtitle: "Bandejas autosoportadas B2B",
+    subtitle: "Bandejas autosoportadas",
     desc: "Soluciones auto-ensamblables para apilado directo en tarimas, exhibición en punto de venta y almacenamiento masivo.",
     icon: PackageCheck,
     tag: "Apilado Seguro",
@@ -100,7 +100,7 @@ export const PRODUCT_CATEGORIES = [
   {
     id: "rsc",
     title: "RSC Embalaje",
-    subtitle: "Regular Slotted Container estándar B2B",
+    subtitle: "Regular Slotted Container estándar",
     desc: "Empaque clásico de máxima eficiencia estructural y relación costo-beneficio para transporte de carga pesada masiva.",
     icon: Box,
     tag: "Formato RSC Estándar",

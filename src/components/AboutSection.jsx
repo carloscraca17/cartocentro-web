@@ -136,7 +136,7 @@ export default function AboutSection() {
                   </li>
                   <li className="flex items-center gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-[#00C2FF]" />
-                    <span>Capacidad de entrega masiva B2B</span>
+                    <span>Capacidad de entrega masiva a nivel nacional</span>
                   </li>
                 </ul>
 

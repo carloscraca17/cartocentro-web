@@ -141,7 +141,7 @@ export default function CustomPackagesSection({ onOpenQuote }) {
           {/* Timeline List */}
           <div className="lg:col-span-7 space-y-4">
             <h3 className="text-xs uppercase tracking-widest text-slate-400 font-bold mb-4">
-              ETAPAS DEL PROCESO TÉCNICO B2B
+              ETAPAS DEL PROCESO TÉCNICO
             </h3>
 
             <div className="space-y-3">

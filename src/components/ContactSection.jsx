@@ -58,7 +58,7 @@ export default function ContactSection({ onOpenQuote }) {
           </h2>
 
           <p className="text-[16px] text-slate-300 font-normal">
-            Comuníquese directamente con nuestro departamento técnico comercial para atención rápida en volumen B2B.
+            Comuníquese directamente con nuestro departamento técnico comercial para atención rápida en volumen.
           </p>
         </div>
 
@@ -115,7 +115,7 @@ export default function ContactSection({ onOpenQuote }) {
                   >
                     +58 424 362 0946
                   </a>
-                  <p className="text-[12px] text-slate-400">Atención inmediata a requerimientos B2B.</p>
+                  <p className="text-[12px] text-slate-400">Atención inmediata a requerimientos corporativos.</p>
                 </div>
               </div>
 
@@ -154,7 +154,7 @@ export default function ContactSection({ onOpenQuote }) {
             {/* Response Commitment Badge */}
             <div className="gsap-contact-anim p-4 rounded-[8px] bg-[#00C2FF]/10 border border-[#00C2FF]/30 flex items-center gap-3 text-[13px] font-semibold text-slate-200">
               <ShieldCheck className="w-4 h-4 text-[#00C2FF] shrink-0" />
-              <span>Respuesta técnica prioritaria para lotes de producción industrial B2B.</span>
+              <span>Respuesta técnica prioritaria para lotes de producción industrial.</span>
             </div>
           </div>
 

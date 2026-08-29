@@ -76,7 +76,7 @@ export default function HeroSection({ onOpenQuote }) {
         <div className="gsap-hero-reveal flex items-center gap-3 mb-4">
           <span className="h-[2px] w-8 bg-[#00C2FF]" />
           <span className="text-[12px] sm:text-[13px] uppercase tracking-[0.2em] font-semibold text-[#00C2FF]">
-            CARTOCENTRO C.A. — Fábrica B2B de Empaques
+            CARTOCENTRO C.A. — Fábrica de Empaques
           </span>
         </div>
 

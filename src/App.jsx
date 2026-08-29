@@ -38,10 +38,10 @@ export default function App() {
         {/* Section 3: EMPAQUES A LA MEDIDA */}
         <CustomPackagesSection onOpenQuote={() => setIsQuoteOpen(true)} />
 
-        {/* Section 4: PREGUNTAS FRECUENTES (FAQ B2B) */}
+        {/* Section 4: PREGUNTAS FRECUENTES (FAQ) */}
         <FaqSection onOpenQuote={() => setIsQuoteOpen(true)} />
 
-        {/* Section 5: CONTACTO CORPORATIVO B2B */}
+        {/* Section 5: CONTACTO CORPORATIVO */}
         <ContactSection onOpenQuote={() => setIsQuoteOpen(true)} />
       </main>
 
@@ -59,7 +59,7 @@ export default function App() {
         onOpenQuote={() => setIsQuoteOpen(true)}
       />
 
-      {/* Interactive B2B Quote Calculator Modal */}
+      {/* Interactive Quote Calculator Modal */}
       <QuoteModal 
         isOpen={isQuoteOpen} 
         onClose={() => setIsQuoteOpen(false)} 

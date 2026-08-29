@@ -168,7 +168,7 @@ export default function BackgroundParallax() {
             <line x1="62%" y1="84%" x2="94%" y2="84%" strokeDasharray="5 5" />
             <line x1="72%" y1="78%" x2="72%" y2="100%" strokeDasharray="5 5" />
             <text x="63%" y="77%" fill="#b5906c" fontSize="12" fontFamily="monospace">
-              DIE-CUT MATRIX REF #B2B-CARTON
+              DIE-CUT MATRIX REF #CC-CARTON
             </text>
           </g>
         </svg>
