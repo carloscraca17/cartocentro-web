@@ -142,15 +142,36 @@ export default function ProductCategoriesSection({ onOpenQuote, onSelectCategory
       ref={sectionRef}
       className="relative z-10 py-24 sm:py-32 px-5 sm:px-8 md:px-12 lg:px-[96px] max-w-[1400px] mx-auto"
     >
-      <div className="section-edge-card p-8 sm:p-12 md:p-16 rounded-[12px] shadow-2xl space-y-12 bg-[#0F172A]/90 border border-[#00C2FF]/20 relative overflow-hidden">
+      <div className="section-edge-card p-8 sm:p-12 md:p-16 rounded-[12px] shadow-2xl space-y-12 bg-[#0F172A]/85 border border-[#00C2FF]/20 relative overflow-hidden">
         
-        <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-[#0066FF] via-[#00C2FF] to-[#38BDF8]" />
+        {/* Top Accent Line */}
+        <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-[#0066FF] via-[#00C2FF] to-[#38BDF8] z-20" />
 
-        {/* Section Header with Video Showcase */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
-          
-          {/* Header Text (Left 7 Cols) */}
-          <div className="lg:col-span-7 space-y-4">
+        {/* BACKGROUND VIDEO LAYER */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+          <video
+            src="https://res.cloudinary.com/ahsxrxpv/video/upload/v1788044006/Clean_D_animated_studio_rende11.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute right-0 top-0 h-full w-full object-cover"
+          />
+
+          {/* Glassmorphism & Gradient Overlay: 100% opacity on the left fading to 15% opacity on the right */}
+          <div 
+            className="absolute inset-0 backdrop-blur-[6px]"
+            style={{
+              background: 'linear-gradient(to right, rgba(15, 23, 42, 1) 0%, rgba(15, 23, 42, 0.85) 45%, rgba(15, 23, 42, 0.45) 75%, rgba(15, 23, 42, 0.15) 100%)'
+            }}
+          />
+        </div>
+
+        {/* FOREGROUND CONTENT (z-10) */}
+        <div className="relative z-10 space-y-12">
+
+          {/* Section Header */}
+          <div className="max-w-3xl space-y-4">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#00C2FF]/10 border border-[#00C2FF]/30 rounded-full">
               <Box className="w-3.5 h-3.5 text-[#00C2FF]" />
               <span className="text-[12px] font-semibold tracking-wider uppercase text-[#00C2FF]">
@@ -165,37 +186,10 @@ export default function ProductCategoriesSection({ onOpenQuote, onSelectCategory
               </span>
             </h2>
 
-            <p className="text-[16px] text-slate-300 font-normal leading-relaxed max-w-2xl">
+            <p className="text-[16px] text-slate-300 font-normal leading-relaxed">
               Haga clic en cualquier categoría para visualizar la galería de imágenes reales de producto.
             </p>
           </div>
-
-          {/* Animated Video Showcase (Right 5 Cols) */}
-          <div className="lg:col-span-5 flex justify-center lg:justify-end">
-            <div className="relative rounded-[12px] overflow-hidden border border-[#00C2FF]/30 shadow-2xl bg-slate-950 flex items-center justify-center">
-              
-              {/* Video Element in original aspect ratio */}
-              <video
-                src="https://res.cloudinary.com/ahsxrxpv/video/upload/v1788044006/Clean_D_animated_studio_rende11.mp4"
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full max-w-[420px] h-auto object-contain block"
-              />
-
-              {/* Glassmorphism Gradient Overlay: 15% opacity on the right fading up to 100% (solid/opaque) on the left */}
-              <div 
-                className="absolute inset-0 pointer-events-none backdrop-blur-[4px]"
-                style={{
-                  background: 'linear-gradient(to right, rgba(15, 23, 42, 1) 0%, rgba(15, 23, 42, 0.75) 40%, rgba(15, 23, 42, 0.4) 70%, rgba(15, 23, 42, 0.15) 100%)'
-                }}
-              />
-              
-            </div>
-          </div>
-
-        </div>
 
         {/* 8 Product Categories Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -271,6 +265,7 @@ export default function ProductCategoriesSection({ onOpenQuote, onSelectCategory
         </div>
 
       </div>
-    </section>
-  );
+    </div>
+  </section>
+);
 }
