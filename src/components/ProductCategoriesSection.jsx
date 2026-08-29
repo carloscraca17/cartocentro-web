@@ -140,57 +140,37 @@ export default function ProductCategoriesSection({ onOpenQuote, onSelectCategory
     <section 
       id="categorias" 
       ref={sectionRef}
-      className="relative z-10 py-24 sm:py-32 px-5 sm:px-8 md:px-12 lg:px-[96px] max-w-[1400px] mx-auto"
+      className="relative z-10 py-20 sm:py-28 px-5 sm:px-8 md:px-12 lg:px-[96px] max-w-[1400px] mx-auto"
     >
-      {/* SECTION BACKGROUND VIDEO (BEHIND THE CARD) */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 rounded-[16px]">
-        <video
-          src="https://res.cloudinary.com/ahsxrxpv/video/upload/v1788044006/Clean_D_animated_studio_rende11.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute right-0 top-0 h-full w-full object-cover"
-        />
-
-        {/* Glassmorphism Gradient Overlay: 100% opacity on the left fading to 15% opacity on the right */}
-        <div 
-          className="absolute inset-0 backdrop-blur-[6px]"
-          style={{
-            background: 'linear-gradient(to right, rgba(6, 9, 19, 1) 0%, rgba(6, 9, 19, 0.85) 45%, rgba(6, 9, 19, 0.45) 75%, rgba(6, 9, 19, 0.15) 100%)'
-          }}
-        />
-      </div>
-
-      {/* FOREGROUND CARD CONTAINER */}
-      <div className="section-edge-card p-8 sm:p-12 md:p-16 rounded-[12px] shadow-2xl space-y-12 bg-[#0F172A]/70 backdrop-blur-md border border-[#00C2FF]/20 relative z-10 overflow-hidden">
+      {/* Light Gray Section Card Container */}
+      <div className="section-edge-card p-8 sm:p-12 md:p-16 rounded-[16px] shadow-2xl space-y-12 bg-[#F1F5F9] border border-slate-300 relative overflow-hidden text-slate-900">
         
         {/* Top Accent Line */}
-        <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-[#0066FF] via-[#00C2FF] to-[#38BDF8] z-20" />
+        <div className="absolute top-0 left-0 w-full h-[4px] bg-gradient-to-r from-[#0066FF] via-[#00C2FF] to-[#38BDF8] z-20" />
 
         {/* Section Header */}
-        <div className="max-w-3xl space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#00C2FF]/10 border border-[#00C2FF]/30 rounded-full">
-            <Box className="w-3.5 h-3.5 text-[#00C2FF]" />
-            <span className="text-[12px] font-semibold tracking-wider uppercase text-[#00C2FF]">
+        <div className="max-w-3xl space-y-4 relative z-10">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#0066FF]/10 border border-[#0066FF]/25 rounded-full">
+            <Box className="w-3.5 h-3.5 text-[#0066FF]" />
+            <span className="text-[12px] font-bold tracking-wider uppercase text-[#0066FF]">
               Líneas de Producción Especializada
             </span>
           </div>
 
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-white leading-[1.1]">
-              Categorías de Productos <br />
-              <span className="font-serif-italic text-cyan-gradient block sm:inline font-normal">
-                diseñadas para cada sector industrial.
-              </span>
-            </h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 leading-[1.1]">
+            Categorías de Productos <br />
+            <span className="font-serif-italic text-[#0066FF] block sm:inline font-normal">
+              diseñadas para cada sector industrial.
+            </span>
+          </h2>
 
-            <p className="text-[16px] text-slate-300 font-normal leading-relaxed">
-              Haga clic en cualquier categoría para visualizar la galería de imágenes reales de producto.
-            </p>
-          </div>
+          <p className="text-[16px] text-slate-600 font-normal leading-relaxed">
+            Haga clic en cualquier categoría para visualizar la galería de imágenes reales de producto.
+          </p>
+        </div>
 
         {/* 8 Product Categories Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
           {PRODUCT_CATEGORIES.map((cat) => {
             const IconComponent = cat.icon;
             const primaryImage = cat.images[0];
@@ -199,46 +179,45 @@ export default function ProductCategoriesSection({ onOpenQuote, onSelectCategory
               <div
                 key={cat.id}
                 onClick={() => onSelectCategory(cat)}
-                className="gsap-cat-card rounded-[10px] bg-slate-900/90 text-white border border-slate-800 hover:border-[#00C2FF] transition-all duration-300 flex flex-col justify-between overflow-hidden cursor-pointer group shadow-lg hover:shadow-[0_0_30px_rgba(0,194,255,0.25)] hover:-translate-y-1"
+                className="gsap-cat-card rounded-[12px] bg-white text-slate-900 border border-slate-200 hover:border-[#0066FF] transition-all duration-300 flex flex-col justify-between overflow-hidden cursor-pointer group shadow-md hover:shadow-xl hover:-translate-y-1"
               >
-                {/* Photo Preview Container (With Mobile Brightness Glow + Opacity Filter) */}
-                <div className="relative h-44 w-full bg-slate-950 overflow-hidden border-b border-slate-800">
+                {/* Photo Preview Container */}
+                <div className="relative h-44 w-full bg-slate-200 overflow-hidden border-b border-slate-200">
                   <img
                     src={primaryImage}
                     alt={cat.title}
-                    className="w-full h-full object-cover max-sm:grayscale-0 max-sm:opacity-85 max-sm:brightness-110 max-sm:contrast-105 sm:grayscale sm:opacity-60 sm:group-hover:grayscale-0 sm:group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                    className="w-full h-full object-cover max-sm:grayscale-0 max-sm:opacity-90 sm:grayscale sm:opacity-75 sm:group-hover:grayscale-0 sm:group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
                   />
-                  {/* Subtle Glow Tint for Mobile Viewports */}
-                  <div className="sm:hidden absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent pointer-events-none" />
+                  <div className="sm:hidden absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
                 </div>
 
                 {/* Body Content */}
                 <div className="p-6 space-y-4 flex-1 flex flex-col justify-between">
                   <div className="space-y-3">
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-[6px] bg-[#00C2FF]/10 text-[#00C2FF] flex items-center justify-center shrink-0 group-hover:bg-[#00C2FF] group-hover:text-black transition-colors">
+                      <div className="w-8 h-8 rounded-[6px] bg-[#0066FF]/10 text-[#0066FF] flex items-center justify-center shrink-0 group-hover:bg-[#0066FF] group-hover:text-white transition-colors">
                         <IconComponent className="w-4 h-4" />
                       </div>
-                      <h3 className="text-xl font-bold tracking-tight text-white group-hover:text-[#00C2FF] transition-colors">
+                      <h3 className="text-xl font-bold tracking-tight text-slate-900 group-hover:text-[#0066FF] transition-colors">
                         {cat.title}
                       </h3>
                     </div>
 
-                    <p className="text-[12px] font-medium text-[#00C2FF]">
+                    <p className="text-[12px] font-semibold text-[#0066FF]">
                       {cat.subtitle}
                     </p>
 
-                    <p className="text-[13px] text-slate-300 leading-relaxed line-clamp-3">
+                    <p className="text-[13px] text-slate-600 leading-relaxed line-clamp-3 font-normal">
                       {cat.desc}
                     </p>
                   </div>
 
                   {/* Separate Action Row */}
-                  <div className="pt-4 border-t border-slate-800 flex items-center justify-between gap-2">
+                  <div className="pt-4 border-t border-slate-100 flex items-center justify-between gap-2">
                     
                     {/* View Photos Trigger */}
-                    <span className="text-[12px] font-semibold text-slate-400 group-hover:text-white flex items-center gap-1">
-                      <Eye className="w-3.5 h-3.5 text-[#00C2FF]" />
+                    <span className="text-[12px] font-semibold text-slate-500 group-hover:text-slate-900 flex items-center gap-1">
+                      <Eye className="w-3.5 h-3.5 text-[#0066FF]" />
                       <span>Ver Fotos</span>
                     </span>
 
